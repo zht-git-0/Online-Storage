@@ -1,5 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    background: url(background.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
