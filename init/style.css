@@ -5,7 +5,7 @@ body {
     background-color: #f4f4f4;
 }
 .navbar {
-    background-color: #333;
+    background-color: transparent;
     overflow: hidden;
 }
 .navbar a {
@@ -39,7 +39,7 @@ h1 {
     border-radius: 4px;
 }
 .footer {
-    background-color: #333;
+    background-color: transparent;
     color: #fff;
     text-align: center;
     padding: 10px 0;
