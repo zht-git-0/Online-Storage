@@ -31,7 +31,8 @@ h1 {
     padding: 0;
 }
 .resource-list li {
-    background: #fff;
+    background-color: transparent;
+    color: #fff;
     margin: 10px 0;
     padding: 15px;
     border: 1px solid #ddd;
@@ -45,4 +46,7 @@ h1 {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+#white-font {
+    color: #fff;
 }
