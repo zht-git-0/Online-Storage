@@ -3,6 +3,8 @@ body {
     background: url(../src/background.jpg) no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
+    display: flex;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -24,21 +26,24 @@ body {
     color: black;
 }
 .container {
-    padding: 20px;
+    padding: 30px 30px;
+    width: 100%;
+    
 }
 h1 {
     color: #333;
+    width: 100%;
 }
 .resource-list {
     list-style: none;
     padding: 0;
 }
-.resource-list li {
-    background-color: transparent;
-    color: #fff;
+.resource-list li { 
+    background-color: rgb(255, 255, 255, 0.6);
+    color: #000000;
+    width: 100%;
     margin: 10px 0;
     padding: 15px;
-    border: 1px solid #ddd;
     border-radius: 4px;
 }
 .footer {
@@ -50,6 +55,8 @@ h1 {
     width: 100%;
     bottom: 0;
 }
-#white-font {
-    color: #fff;
+#welcome{
+    clear: #000000;
+    width: 100%;
+    font-size:30px;
 }

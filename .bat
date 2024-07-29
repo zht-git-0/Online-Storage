@@ -1,3 +1,3 @@
-git commit -m '-'
+git commit 
 git push origin main
 cmd
