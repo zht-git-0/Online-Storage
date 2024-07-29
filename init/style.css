@@ -47,6 +47,10 @@ h1 {
     padding: 15px;
     border-radius: 25px;
 }
+.resource-list button {
+    background-color: rgb(255, 255, 255, 0);
+    border: none;
+}
 .footer {
     background-color: transparent;
     color: #000000;
@@ -55,6 +59,7 @@ h1 {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 0;
 }
 #welcome{
     clear: #000000;
