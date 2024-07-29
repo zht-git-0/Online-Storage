@@ -38,3 +38,11 @@
     color: #0099ff;
     text-decoration: underline;
 }
+.side-list{
+    list-style: none;
+}
+.li-button{
+    background-color: transparent;
+    border: none;
+    font-size: larger;
+}

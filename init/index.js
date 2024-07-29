@@ -14,4 +14,8 @@ close_button.addEventListener('click', function() {
         memu_button.style.display = 'block'
     }
 })
+let about_button =document.getElementById("li1")
+about_button.addEventListener('click', function() {
+    alert("qq:1125671299")
+})
 //side.style.display = 'none'
