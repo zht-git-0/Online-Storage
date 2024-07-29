@@ -18,4 +18,8 @@ let about_button =document.getElementById("li1")
 about_button.addEventListener('click', function() {
     alert("qq:1125671299")
 })
+let git_button =document.getElementById("li2")
+git_button.addEventListener('click', function() {
+    location.href = "https://github.com/zht-git-0/Online-Storage/"
+})
 //side.style.display = 'none'
