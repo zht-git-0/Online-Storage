@@ -29,4 +29,12 @@
     border: none;
     font-size: large;
     color: #0099ff;
+    text-decoration: underline;
+}
+#close-menu{
+    background-color: transparent;
+    border: none;
+    font-size: large;
+    color: #0099ff;
+    text-decoration: underline;
 }
