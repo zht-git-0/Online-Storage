@@ -24,10 +24,11 @@
     width: 32px;
 }
 #btn-side{
-    background-color: transparent;
+    background-color: rgb(255, 255, 255,0.6);
     border: none;
+    border-radius: 10px;
     font-size: large;
-    color: #0099ff;
+    color: #0015ff;
     text-decoration: underline;
 }
 #close-menu{
@@ -35,7 +36,7 @@
     border-radius: 10px;
     border: none;
     font-size: large;
-    color: #0099ff;
+    color: #0015ff;
     text-decoration: underline;
 }
 .side-list{
