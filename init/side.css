@@ -29,12 +29,14 @@
 }
 #btn-side{
     background-color: var(--x-color);
+    position: fixed;
+    height: 45px;
+    width: 45px;
+    left: -18px;
     border: none;
+    border-radius: 50%;
     height: 41px;
-    border-radius: 10px;
-    font-size: large;
     color: #0015ff;
-    text-decoration: underline;
 }
 #close-menu{
     background-color: var(--x-color);
@@ -43,7 +45,6 @@
     border: none;
     font-size: large;
     color: #0015ff;
-    text-decoration: underline;
 }
 .side-list{
     list-style: none;

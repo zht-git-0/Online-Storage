@@ -20,6 +20,6 @@ about_button.addEventListener('click', function() {
 })
 let git_button =document.getElementById("li2")
 git_button.addEventListener('click', function() {
-    location.href = "https://github.com/zht-git-0/Online-Storage/"
+    window.open("https://github.com/zht-git-0/Online-Storage/")
 })
 //side.style.display = 'none'
