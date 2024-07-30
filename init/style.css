@@ -46,6 +46,9 @@ h1 {
     margin: 10px 0;
     padding: 15px;
     border-radius: 25px;
+    animation: appear 0.5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
 }
 .resource-list button {
     background-color: rgb(255, 255, 255, 0);

@@ -2,6 +2,9 @@
     --bg-color: #f4f4f4;
     --x-color: rgb(255, 255, 255,0.6)
 }
+#side{
+    animation: move 0.2s linear;
+}
 .sidebar {
     width: 200px;
     background-color: rgb(255,255,255,0.3);
@@ -37,6 +40,9 @@
     border-radius: 50%;
     height: 41px;
     color: #0015ff;
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0;
 }
 #close-menu{
     background-color: var(--x-color);
