@@ -3,7 +3,7 @@
     --x-color: rgb(255, 255, 255,0.6)
 }
 #side{
-    animation: move 0.2s linear;
+    animation: move 0.1s linear;
 }
 .sidebar {
     width: 200px;
