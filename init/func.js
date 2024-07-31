@@ -7,4 +7,4 @@ function check(){
     //placeholder.style.height = side.offsetHeight + 'px';
     placeholder.style.width = side.offsetWidth + 'px';
 };
-setInterval(check,10)
+setInterval(check,100)
