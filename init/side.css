@@ -3,8 +3,17 @@
     --x-color: rgb(255, 255, 255,0.6)
 }
 #side{
-    animation: move 0.1s linear;
+    animation-duration: 0.1s;
+    height: 100%;
+    z-index: 1000;
+    position: fixed;
+    animation-fill-mode: both;
 }
+.placeholder {
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
 .sidebar {
     width: 200px;
     background-color: rgb(255,255,255,0.3);

@@ -8,12 +8,24 @@
         scale: 1;
     }
 }
-@keyframes move{
+@keyframes move_right {
     from{
+        opacity: 0;
         transform: translate(-200px);
     }
     to{
+        opacity: 1;
         transform: translate(0);
+    }
+}
+@keyframes move_left {
+    from{
+        opacity: 1;
+        transform: translate(0);
+    }
+    to{
+        opacity: 0;
+        transform: translate(-200px);
     }
 }
 #welcome p{
@@ -36,7 +48,7 @@
     -webkit-animation: flowCss 12s infinite linear;
 }
 
-@-webkit-keyframes flowCss {
+@keyframes flowCss {
     0% {
         /* 移动背景位置 */
         background-position: 0 0;
