@@ -1,6 +1,6 @@
 var duration = 100; // 0.8s
 var placeholder = document.getElementById('placeholder');
-function sleep(ms=duration) {
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 } 
 function check(){

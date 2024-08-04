@@ -28,6 +28,21 @@
         transform: translate(-200px);
     }
 }
+@keyframes mouse_meet {
+    from {
+        scale: 1;
+    }
+    to{
+        scale: 1.02;
+    }
+}@keyframes mouse_leave {
+    from {
+        scale: 1.02;
+    }
+    to{
+        scale: 1;
+    }
+}
 #welcome p{
     background: -webkit-linear-gradient(135deg,
             #0eaf6d,

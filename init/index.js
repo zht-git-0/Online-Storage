@@ -15,7 +15,7 @@ var close_button = document.getElementById('close-menu')
 close_button.addEventListener('click', async function() {
     if (side.style.display !== 'none'){
         side.style.animationName = 'move_left'
-        await sleep()
+        await sleep(duration)
         side.style.display = 'none'
         memu_button.style.display = 'block'
     }
@@ -28,4 +28,3 @@ var git_button =document.getElementById("li2")
 git_button.addEventListener('click', function() {
     window.open("https://github.com/zht-git-0/Online-Storage/")
 })
-//side.style.display = 'none'
