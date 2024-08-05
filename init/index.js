@@ -20,11 +20,11 @@ close_button.addEventListener('click', async function() {
         memu_button.style.display = 'block'
     }
 })
-var about_button =document.getElementById("li1")
+var about_button =document.getElementById("connect")
 about_button.addEventListener('click', function() {
     alert("qq:1125671299")
 })
-var git_button =document.getElementById("li2")
+var git_button =document.getElementById("ToGithub")
 git_button.addEventListener('click', function() {
     window.open("https://github.com/zht-git-0/Online-Storage/")
 })
