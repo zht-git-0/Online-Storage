@@ -33,11 +33,11 @@
         scale: 1;
     }
     to{
-        scale: 1.02;
+        scale: 1.01;
     }
 }@keyframes mouse_leave {
     from {
-        scale: 1.02;
+        scale: 1.01;
     }
     to{
         scale: 1;
