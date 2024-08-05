@@ -38,7 +38,7 @@
 //    place_config()})
 //  .catch(error => console.error('Error:', error));
 function place_config(config){   
-  //console.log(config)
+  //console.log(config)    
   var resource_list=document.getElementsByClassName("resource-list")[0]
   var ct=document.getElementsByClassName("ct")[0]
   ct.style.display = 'none'
