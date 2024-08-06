@@ -1,6 +1,11 @@
 var first_page=document.getElementById("first_page")
 first_page.addEventListener("click",function(){
-    window.history.back()
+    let hf=location.href.split("/")
+    let r=''
+    for(let i=0;i<hf.length-3;i++){
+        r+=hf[i]+"/"
+    }
+    console.log(r+"index.html")
 })
 const params = new URLSearchParams(window.location.search);
 var nm = params.get('name');
