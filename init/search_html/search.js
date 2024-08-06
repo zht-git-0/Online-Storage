@@ -1,11 +1,19 @@
 var first_page=document.getElementById("first_page")
-first_page.addEventListener("click",function(){
+function go_first_page(){
     let hf=location.href.split("/")
     let r=''
     for(let i=0;i<hf.length-3;i++){
         r+=hf[i]+"/"
     }
+    console.log(r)
     location.href=r+"index.html"
+}
+first_page.addEventListener("click",function(){
+    go_first_page()
+})
+var btn_back=document.getElementById("btn-back")
+btn_back.addEventListener("click",function(){
+    go_first_page()
 })
 const params = new URLSearchParams(window.location.search);
 var nm = params.get('name');
