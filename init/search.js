@@ -11,7 +11,7 @@ search.addEventListener("click",function(){
     }
     flag=!flag
 })
-search_input.addEventListener("blur",async function(){
+search_input.addEventListener("focusout",async function(){
     search_input.classList.remove("x_appear")
     search_input.placeholder=""
     search_input.classList.add("x_disappear")
