@@ -2,23 +2,13 @@
 <html lang="zh-CN" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="./src/icon.ico">
+    <link rel="icon" type="image/x-icon" href="./icon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>胖の资源下载网站</title>
-    <link rel="stylesheet" href="./init/ani.css"> 
-    <link rel="stylesheet" href="./init/style.css">
-    <link rel="stylesheet" href="./init/side.css">
-    <link rel="stylesheet" href="./init/loader.css">
-    <link rel="stylesheet" href="./init/search.css">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body> 
     <div class="footer"><h1>版权 &copy; 胖达</h1></div>
-    <form action="./init/search_html/search.html" method="get" id="form">
-        <input id="search-input" type="text" placeholder="搜索" name="name">
-    </form>
-    <div id="search" tabindex="0">
-        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z"/></svg>
-    </div>
     <div class="placeholder" id="placeholder"><div class="side-div" style="height: 100%;"></div></div>
     <div id="side">
         <div class="side-div" style="height: 100%;"></div>
@@ -36,16 +26,14 @@
         <!-- 菜单 -->
         <button id="btn-side"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M521.33-480.67 328-674l47.33-47.33L616-480.67 375.33-240 328-287.33l193.33-193.34Z"/></svg></button>
         <div id="welcome">
-            <p>欢迎来到胖の资源下载网站</p>
-            <p>资源列表</p>
+            <p>搜索结果</p>
         </div>
         <div class="ct"><div class="loader"></div></div>
         <ul class="resource-list"></ul>
     </div> 
     <div class="left-bar">
-    <script src="./init/func.js"></script>
-    <script src="./init/index.js"></script>
-    <script src="./init/download.js"></script> 
-    <script src="./init/search.js"></script>
-</body> 
+    <script src="./search.js"></script>
+    <script src="../func.js"></script>
+    <script src="../index.js"></script>
+</body>
 </html>

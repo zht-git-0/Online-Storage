@@ -1,0 +1,332 @@
+/* HTML: <div class="loader"></div> */
+.ct {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+.loader {
+    width: 160px;
+    aspect-ratio: 1;
+    background: #000000;
+    clip-path: polygon(100.00% 50.00%,64.14% 64.14%,50.00% 100.00%,35.86% 64.14%,0.00% 50.00%,35.86% 35.86%,50.00% 0.00%,64.14% 35.86%);
+    -webkit-mask:radial-gradient(circle 5px,#0000 90%,#000);
+    animation: l1 0.6s infinite linear;
+  }
+  @keyframes l1{ 
+    100%{transform: rotate(1turn)}
+}
+@keyframes move_forward{
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translate(-150px);
+    }
+}
+@keyframes move_back{
+    from{
+        transform: translate(-150px);
+    }
+    to{
+        transform: translate(0px);
+    }
+}
+@keyframes x_appear {
+    from{
+        width: 0;
+    }
+    to{
+        width: 200px;
+    }
+}
+@keyframes x_disappear {
+    from{
+        width: 200px;
+    }
+    to{
+        width: 0;
+    }
+}
+#search{
+    position: absolute;
+    top:10px;
+    right: 20px;
+    cursor: pointer;
+    /* animation: move_back 0.4s forwards; */
+    /* animation: move_forward 0.4s forwards; */
+}
+#search.move_forward{
+    animation: move_forward 0.4s forwards;
+}
+#search.move_back{
+    animation: move_back 0.4s forwards;
+}
+#search-input{
+    position: absolute;
+    top:12px;
+    right: 20px;
+    height: 44px;
+    width: 0;
+    font-size: 25px;
+    border: none;
+    color: #000;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    padding-left: 15px;
+    display:none
+}
+#search-input::-webkit-input-placeholder {
+    color: rgb(0, 0, 0);
+  }
+#search-input:focus{
+    outline: 4px solid rgb(255, 255, 255, 1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+#search-input.x_appear{
+    animation: x_appear 0.4s forwards;
+}
+#search-input.x_disappear{
+    animation: x_disappear 0.4s forwards;
+}
+:root{
+    --bg-color: #f4f4f4;
+    --x-color: rgb(255, 255, 255,0.6)
+}
+#side{
+    animation-duration: 0.1s;
+    height: 100%;
+    z-index: 1000;
+    position: fixed;
+    animation-fill-mode: both;
+}
+.placeholder {
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.sidebar {
+    width: 200px;
+    background-color: rgb(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: 20px;  
+}
+.side-div{
+    width: 200px;
+    opacity: 0;
+    background-color: var(--bg-color);
+    height: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: 20px;
+}
+.left-bar{
+    width: 32px;
+}
+#btn-side{
+    background-color: var(--x-color);
+    position: fixed;
+    height: 45px;
+    width: 45px;
+    left: -18px;
+    border: none;
+    border-radius: 50%;
+    height: 41px;
+    color: #0015ff;
+    cursor: pointer;
+}
+#close-menu{
+    background-color: var(--x-color);
+    border-radius: 10px;
+    height: 41px;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+    color: #0015ff;
+}
+.side-list{
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    margin: 0;
+}
+.side-list li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.side-list button{
+    width: 100%;
+    background-color: var(--x-color);
+    border-radius: 10px;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: url(background.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.navbar {
+    background-color: transparent;
+    overflow: hidden;
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.container {
+    padding: 30px 30px;
+    width: 100%;
+    
+}
+h1 {
+    color: #333;
+    width: 100%;
+}
+.resource-list {
+    list-style: none;
+    padding: 0;
+}
+.resource-list li { 
+    background-color: rgb(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    color: #000000;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    border: 4px solid rgb(255, 255, 255, 0) ;
+    text-align: center;
+    border-radius: 25px;
+    /* animation: appear 0.5s linear;
+    animation-timeline: view();
+    animation-range: entry 0; */
+}
+.resource-list li.meet {
+    animation: mouse_meet 0.3s forwards;
+    border: 4px solid rgb(255, 255, 255);
+}
+.resource-list li.leave {
+    animation: mouse_leave 0.3s forwards;
+    border: 4px solid rgb(255, 255, 255, 0);
+}
+.resource-list button {
+    background-color: rgb(255, 255, 255, 0);
+    cursor: pointer;
+    border: none;
+}
+.footer {
+    background-color: transparent;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+}
+#welcome{
+    clear: #000000;
+    width: 100%;
+    font-size:30px;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+@keyframes move_right {
+    from{
+        opacity: 0;
+        transform: translate(-200px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes move_left {
+    from{
+        opacity: 1;
+        transform: translate(0);
+    }
+    to{
+        opacity: 0;
+        transform: translate(-200px);
+    }
+}
+@keyframes mouse_meet {
+    from {
+        scale: 1;
+    }
+    to{
+        scale: 1.01;
+    }
+}@keyframes mouse_leave {
+    from {
+        scale: 1.01;
+    }
+    to{
+        scale: 1;
+    }
+}
+#welcome p{
+    background: -webkit-linear-gradient(135deg,
+            #0eaf6d,
+            #ff6ac6 25%,
+            #147b96 50%,
+            #e6d205 55%,
+            #2cc4e0 60%,
+            #8b2ce0 80%,
+            #ff6384 95%,
+            #08dfb4);
+    /* 文字颜色填充设置为透明 */
+    -webkit-text-fill-color: transparent;
+    /* 背景裁剪，即让文字使用背景色 */
+    -webkit-background-clip: text;
+    /* 背景图放大一下，看着柔和一些 */
+    -webkit-background-size: 200% 100%;
+    /* 应用动画flowCss 12秒速度 无限循环 线性匀速动画*/
+    -webkit-animation: flowCss 12s infinite linear;
+}
+
+@keyframes flowCss {
+    0% {
+        /* 移动背景位置 */
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -400% 0;
+    }
+}
+
+
