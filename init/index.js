@@ -28,7 +28,3 @@ var git_button =document.getElementById("ToGithub")
 git_button.addEventListener('click', function() {
     window.open("https://github.com/zht-git-0/Online-Storage/")
 })
-var first_page =document.getElementById("first_page")
-first_page.addEventListener('click', function() {
-    location.reload()
-})

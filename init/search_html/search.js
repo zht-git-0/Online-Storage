@@ -5,7 +5,7 @@ first_page.addEventListener("click",function(){
     for(let i=0;i<hf.length-3;i++){
         r+=hf[i]+"/"
     }
-    console.log(r+"index.html")
+    location.href=r+"index.html"
 })
 const params = new URLSearchParams(window.location.search);
 var nm = params.get('name');
@@ -47,7 +47,20 @@ function place_config(config){
 var res=fetch(`https://zht-back-server.us.kg/search?name=${nm}`)
   .then(response => response.json())
   .then(data => {
-    place_config(data)
+    if (data["message"]!='not found')
+    {place_config(data)}
+    else{
+        var ct=document.getElementsByClassName("ct")[0]
+        ct.style.display = 'none'
+        var resource_list=document.getElementsByClassName("resource-list")[0]
+        resource_list.innerHTML=resource_list.innerHTML+
+            `\
+            <li class="resource-li">\
+                <h3>Not Fount!</h3>\
+                <p class="download-p"></p>\
+            </li>\
+            `
+    }
     }
   )
   .catch(error => console.error('Error:', error));  

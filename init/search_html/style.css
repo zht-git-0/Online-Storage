@@ -328,5 +328,12 @@ h1 {
         background-position: -400% 0;
     }
 }
-
+#btn-back{
+    background-color: rgb(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+}
 

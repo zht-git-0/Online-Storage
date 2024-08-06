@@ -1,3 +1,7 @@
+var first_page =document.getElementById("first_page")
+first_page.addEventListener('click', function() {
+    location.reload()
+})
 function place_config(config){   
   //config是配置
   //console.log(config)    
