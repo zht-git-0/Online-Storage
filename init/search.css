@@ -32,8 +32,8 @@
 }
 #search{
     position: absolute;
-    top:10px;
-    right: 20px;
+    top:40px;
+    right: 40px;
     cursor: pointer;
     /* animation: move_back 0.4s forwards; */
     /* animation: move_forward 0.4s forwards; */
@@ -46,8 +46,8 @@
 }
 #search-input{
     position: absolute;
-    top:12px;
-    right: 20px;
+    top:42px;
+    right: 40px;
     height: 44px;
     width: 0;
     font-size: 25px;

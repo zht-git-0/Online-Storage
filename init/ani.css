@@ -43,7 +43,7 @@
         scale: 1;
     }
 }
-#welcome p{
+#welcome a{
     background: -webkit-linear-gradient(135deg,
             #0eaf6d,
             #ff6ac6 25%,
