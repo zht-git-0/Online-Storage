@@ -44,6 +44,20 @@
             align-items: center;
         }
 
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #model-select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            outline: none;
+        }
+
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -56,48 +70,17 @@
             border-radius: 15px;
             max-width: 80%;
             word-wrap: break-word;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .message-content {
-            flex: 1;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            flex-shrink: 0;
         }
 
         .user-message {
             background: #007AFF;
             color: white;
             margin-left: auto;
-            flex-direction: row-reverse;
         }
 
         .ai-message {
             background: #f0f0f0;
             color: #333;
-        }
-
-        .user-avatar {
-            background: #0056b3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .ai-avatar {
-            background-image: url('https://lh3.googleusercontent.com/a/AEdFTp4z3bJlYhxqvtm_Qx9_Zk2Ht5qwL6kQZxECyqTi=s96-c');
-            background-size: cover;
-            background-position: center;
         }
 
         .input-container {
@@ -145,13 +128,26 @@
         #new-chat-button:hover {
             background: #0056b3;
         }
+
+        #send-button:disabled,
+        #user-input:disabled,
+        #model-select:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h1>Google Gemini</h1>
-            <button id="new-chat-button">新建对话</button>
+            <h1>AI 助手</h1>
+            <div class="header-controls">
+                <select id="model-select">
+                    <option value="gemini-2.0-flash-exp">gemini-2.0-flash-exp</option>
+                    <option value="gemini-exp-1206">gemini-exp-1206</option>
+                </select>
+                <button id="new-chat-button">新建对话</button>
+            </div>
         </div>
         <div class="chat-messages" id="chat-messages">
             <div class="message ai-message">
@@ -169,29 +165,12 @@
         const userInput = document.getElementById('user-input');
         const sendButton = document.getElementById('send-button');
         const newChatButton = document.getElementById('new-chat-button');
+        const modelSelect = document.getElementById('model-select');
 
         function addMessage(content, isUser) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
-            
-            const avatarDiv = document.createElement('div');
-            avatarDiv.className = `avatar ${isUser ? 'user-avatar' : 'ai-avatar'}`;
-            if (isUser) {
-                avatarDiv.textContent = '用户';
-            }
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-            contentDiv.textContent = content;
-            
-            if (isUser) {
-                messageDiv.appendChild(contentDiv);
-                messageDiv.appendChild(avatarDiv);
-            } else {
-                messageDiv.appendChild(avatarDiv);
-                messageDiv.appendChild(contentDiv);
-            }
-            
+            messageDiv.textContent = content;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -200,50 +179,68 @@
             const message = userInput.value.trim();
             if (!message) return;
 
+            // 禁用输入框和发送按钮
+            userInput.disabled = true;
+            sendButton.disabled = true;
+            modelSelect.disabled = true;
+
             // 添加用户消息
             addMessage(message, true);
             userInput.value = '';
-
             // 创建新的AI消息div
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message ai-message';
-            
-            const avatarDiv = document.createElement('div');
-            avatarDiv.className = 'avatar ai-avatar';
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-            contentDiv.innerHTML = '......';
-            
-            messageDiv.appendChild(avatarDiv);
-            messageDiv.appendChild(contentDiv);
-            chatMessages.appendChild(messageDiv);
+            const aiMessageDiv = document.createElement('div');
+            aiMessageDiv.className = 'message ai-message';
+            chatMessages.appendChild(aiMessageDiv);
+            aiMessageDiv.innerHTML = '...';
             chatMessages.scrollTop = chatMessages.scrollHeight;
-
             try {
-                const response = await fetch('http://127.0.0.1:5000/gemini', {
+                const response = await fetch('https://zht-back-server.us.kg/gemini', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ message: message })
+                    body: JSON.stringify({ 
+                        message: message,
+                        model: modelSelect.value
+                    })
                 });
 
-                contentDiv.innerHTML = '';
-
+                // 创建响应流读取器
                 const reader = response.body.getReader();
                 const decoder = new TextDecoder();
-                
+                let buffer = '';
+                aiMessageDiv.innerHTML = '';
                 while (true) {
                     const {value, done} = await reader.read();
                     if (done) break;
                     
-                    const text = decoder.decode(value).replace(/\n/g, '<br>');
-                    contentDiv.innerHTML += text;
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    // 解码新内容
+                    const text = decoder.decode(value);
+                    buffer += text;
+                    
+                    // 逐字符显示
+                    const chars = buffer.split('');
+                    buffer = '';
+                    
+                    for (const char of chars) {
+                        if (char === '\n') {
+                            aiMessageDiv.innerHTML += '<br>';
+                        } else {
+                            aiMessageDiv.innerHTML += char;
+                        }
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        // 添加小延迟使显示更自然
+                        await new Promise(resolve => setTimeout(resolve, 10));
+                    }
                 }
             } catch (error) {
                 addMessage('抱歉，发生了错误，请稍后重试。', false);
+            } finally {
+                // 重新启用输入框和发送按钮
+                userInput.disabled = false;
+                sendButton.disabled = false;
+                modelSelect.disabled = false;
+                userInput.focus();
             }
         }
 
@@ -256,11 +253,9 @@
 
         // 新建对话功能
         newChatButton.addEventListener('click', () => {
-            if (confirm('确定要开始新对话吗？当前对话内容将被清空。')) {
-                chatMessages.innerHTML = '<div class="message ai-message">我是谷歌Gemini</div>';
-                userInput.value = '';
-                userInput.focus();
-            }
+            chatMessages.innerHTML = '<div class="message ai-message">我是谷歌Gemini</div>';
+            userInput.value = '';
+            userInput.focus();
         });
     </script>
 </body>
