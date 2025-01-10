@@ -37,12 +37,12 @@
     cursor: pointer;
     /* animation: move_back 0.4s forwards; */
     /* animation: move_forward 0.4s forwards; */
-}
-#search.move_forward{
-    animation: move_forward 0.4s forwards;
-}
-#search.move_back{
-    animation: move_back 0.4s forwards;
+    &.move_forward{
+        animation: move_forward 0.4s forwards;
+    }
+    &.move_back{
+        animation: move_back 0.4s forwards;
+    }
 }
 #search-input{
     position: absolute;
@@ -57,18 +57,19 @@
     background-color: rgb(255, 255, 255, 0.6);
     backdrop-filter: blur(5px);
     padding-left: 15px;
-    display:none
+    display:none;
+    &::-webkit-input-placeholder {
+        color: rgb(0, 0, 0);
+    }
+    &:focus{
+        outline: 4px solid rgb(255, 255, 255, 1);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    }
+    &.x_appear{
+        animation: x_appear 0.4s forwards;
+    }
+    &.x_disappear{
+        animation: x_disappear 0.4s forwards;
+    }
 }
-#search-input::-webkit-input-placeholder {
-    color: rgb(0, 0, 0);
-  }
-#search-input:focus{
-    outline: 4px solid rgb(255, 255, 255, 1);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-#search-input.x_appear{
-    animation: x_appear 0.4s forwards;
-}
-#search-input.x_disappear{
-    animation: x_disappear 0.4s forwards;
-}
+

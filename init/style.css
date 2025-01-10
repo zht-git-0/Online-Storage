@@ -20,10 +20,10 @@ body {
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
-}
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    &:hover {
+        background-color: #ddd;
+        color: black;
+    }
 }
 .container {
     padding: 30px 30px;
@@ -50,14 +50,14 @@ h1 {
     /* animation: appear 0.5s linear;
     animation-timeline: view();
     animation-range: entry 0; */
-}
-.resource-list li.meet {
-    animation: mouse_meet 0.3s forwards;
-    border: 4px solid rgb(255, 255, 255);
-}
-.resource-list li.leave {
-    animation: mouse_leave 0.3s forwards;
-    border: 4px solid rgb(255, 255, 255, 0);
+    &.meet {
+        animation: mouse_meet 0.3s forwards;
+        border: 4px solid rgb(255, 255, 255);
+    }
+    &.leave {
+        animation: mouse_leave 0.3s forwards;
+        border: 4px solid rgb(255, 255, 255, 0);
+    }
 }
 .resource-list button {
     background-color: rgb(255, 255, 255, 0);

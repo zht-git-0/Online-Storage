@@ -5,7 +5,6 @@ function go_first_page(){
     for(let i=0;i<hf.length-3;i++){
         r+=hf[i]+"/"
     }
-    console.log(r)
     location.href=r+"index.html"
 }
 first_page.addEventListener("click",function(){

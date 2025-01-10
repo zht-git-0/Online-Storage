@@ -28,3 +28,7 @@ var git_button =document.getElementById("ToGithub")
 git_button.addEventListener('click', function() {
     window.open("https://github.com/zht-git-0/Online-Storage/")
 })
+var git_button =document.getElementById("Gemini")
+git_button.addEventListener('click', function() {
+    window.open("./init/gemini/index.html")
+})
