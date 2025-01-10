@@ -256,6 +256,9 @@
             chatMessages.innerHTML = '<div class="message ai-message">我是谷歌Gemini</div>';
             userInput.value = '';
             userInput.focus();
+            fetch('https://zht-back-server.us.kg/reset', {
+                method: 'POST',
+            });
         });
     </script>
 </body>
