@@ -1,10 +1,16 @@
 DirectoryIndex index.html
 
 RewriteEngine On
+
+# 移除URL末尾的斜杠
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# 处理.html扩展名
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-# Remove .html extension
+# 从URL中移除.html扩展名
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
-RewriteRule ^ %1 [R=301,L]  
+RewriteRule ^ %1 [R=301,L] 
