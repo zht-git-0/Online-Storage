@@ -196,6 +196,7 @@ header p {
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     cursor: pointer;
     opacity: 0.95;
+    color: transparent; /* 默认状态下文字透明 */
 }
 
 /* 搜索框加载状态样式 */
@@ -248,8 +249,7 @@ header p {
     padding: 18px 25px 18px 60px;
     border-radius: 30px;
     cursor: text;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 4px 30px rgba(108, 92, 231, 0.2);
+    color: var(--text-color); /* 展开时显示文字颜色 */
 }
 
 /* 搜索框聚焦时显示占位符 */
