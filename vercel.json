@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/ai",
+      "destination": "/ai/index.html"
+    }
+  ]
+} 
