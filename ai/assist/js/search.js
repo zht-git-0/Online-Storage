@@ -48,7 +48,12 @@ class AISearch {
             clearTimeout(this.searchTimeout);
 
             if (!searchTerm) {
-                this.resetSearch();
+                this.setLoading(false);
+                this.searchBox.classList.remove('loading', 'no-results');
+                this.searchStatus.textContent = '';
+                if (this.config.defaultData && this.config.defaultData.categories) {
+                    this.config.onRender(this.config.defaultData.categories);
+                }
                 return;
             }
 
@@ -115,6 +120,10 @@ class AISearch {
      * @returns {Object} 搜索结果
      */
     performLocalSearch(searchTerm) {
+        if (!this.config.defaultData || !this.config.defaultData.categories) {
+            return { categories: [] };
+        }
+        
         const filteredCategories = this.config.defaultData.categories.map(category => ({
             name: category.name,
             tools: category.tools.filter(tool => 
@@ -184,6 +193,8 @@ class AISearch {
      */
     resetSearch() {
         this.searchBox.classList.remove('loading', 'no-results');
-        this.config.onRender(this.config.defaultData.categories);
+        if (this.config.defaultData && this.config.defaultData.categories) {
+            this.config.onRender(this.config.defaultData.categories);
+        }
     }
 } 

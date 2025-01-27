@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize search with the fetched data
     const search = new AISearch({
         apiUrl: 'https://zht-back-server.us.kg/api/search',
-        defaultData: null,
+        defaultData: initialData,
         onRender: renderCategories,
         debounceTime: 300
     });
