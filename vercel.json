@@ -7,7 +7,7 @@
       "destination": "/ai/index.html"
     },
     {
-      "source": "/ai/assist/:path*",
+      "source": "/assist/:path*",
       "destination": "/ai/assist/:path*"
     }
   ]
