@@ -2,6 +2,12 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# 设置重写基准目录
+RewriteBase /
+
+# 不重写CSS、JS等静态资源的请求
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|ico|svg)$ [NC]
+
 # 移除URL末尾的斜杠
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
