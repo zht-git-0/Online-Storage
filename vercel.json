@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/ai",
+      "source": "/AI_",
       "destination": "/ai/index.html"
     },
     {
