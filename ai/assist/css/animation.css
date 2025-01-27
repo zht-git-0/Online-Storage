@@ -1,0 +1,630 @@
+/* 标题动画效果 */
+@keyframes titleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+header h1 {
+    position: relative;
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(
+        90deg,
+        #000 0%,
+        #fff 25%,
+        #fff 50%,
+        #fff 75%,
+        #000 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.3),
+        0 0 20px rgba(0, 255, 255, 0.3),
+        0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* 标题光效动画 */
+@keyframes shine {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+/* 标题悬浮效果 */
+header h1:hover {
+    animation: shine 1.5s linear infinite;
+    text-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.6),
+        0 0 40px rgba(0, 255, 255, 0.4),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        0 0 80px rgba(0, 255, 255, 0.2);
+}
+
+/* 副标题样式 */
+header p {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 背景光效果 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+html, body {
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* 卡片出现动画 */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: cardAppear 0.6s ease-out backwards;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card-grid {
+    perspective: 1000px;
+}
+
+.category-section:nth-child(1) .card { animation-delay: 0.1s; }
+.category-section:nth-child(2) .card { animation-delay: 0.2s; }
+.category-section:nth-child(3) .card { animation-delay: 0.3s; }
+
+/* 分类标题特效 */
+@keyframes titleSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.category-title {
+    animation: titleSlide 0.8s ease-out backwards;
+}
+
+/* 搜索框动画效果 */
+.search-box::before {
+    content: '🔍';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    opacity: 0.8;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.search-box input {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search-box input::placeholder {
+    transition: opacity 0.3s ease;
+}
+
+/* 搜索框展开状态 */
+.search-box:focus-within::before {
+    left: 35px;
+    opacity: 0.4;
+    font-size: 1.2rem;
+}
+
+.search-box:focus-within input {
+    width: 100%;
+    max-width: 600px;
+    padding: 18px 25px 18px 60px;
+    border-radius: 30px;
+    cursor: text;
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.search-box:focus-within input::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+/* 卡片图标动画 */
+@keyframes iconPulse {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.card:hover .card-icon {
+    animation: iconPulse 1s ease-in-out infinite;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+}
+
+.card-icon {
+    transition: all 0.3s ease;
+}
+
+.card-icon img {
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.card:hover .card-icon img {
+    transform: scale(1.1) rotate(2deg);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* 卡片内容动画 */
+.card-content {
+    transition: transform 0.3s ease;
+}
+
+.card-content h3 {
+    color: #fff;
+    text-shadow: 
+        0 0 6px rgba(255, 255, 255, 0.9),
+        0 0 12px rgba(255, 255, 255, 0.6),
+        0 0 18px rgba(255, 255, 255, 0.4);
+    transition: text-shadow 0.3s ease;
+}
+
+.card-content p {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.6),
+        0 0 6px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-content {
+    transform: translateX(5px);
+}
+
+.card:hover .card-content h3 {
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 1),
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 30px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.4);
+}
+
+.card:hover .card-content p {
+    color: #fff;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 15px rgba(255, 255, 255, 0.7),
+        0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* 卡片悬浮效果 */
+.card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-style: preserve-3d;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* 页脚动画 */
+@keyframes footerGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
+    50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+}
+
+footer {
+    animation: footerGlow 3s ease-in-out infinite;
+}
+
+/* 移动端动画适配 */
+@media (max-width: 480px) {
+    .search-box:focus-within::before {
+        left: 25px;
+        font-size: 1rem;
+    }
+
+    .search-box:focus-within input {
+        padding: 15px 20px 15px 50px;
+    }
+
+    /* 禁用部分动画以提升移动端性能 */
+    html, body {
+        animation: none;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card:hover .card-content {
+        transform: translateX(3px);
+    }
+
+    .card:hover .card-icon {
+        animation: none;
+    }
+}
+
+/* 添加暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .card {
+        backdrop-filter: blur(15px);
+    }
+
+    .card:hover {
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* 星空背景 */
+.tech-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(125deg, #0f0c29, #302b63, #24243e);
+    overflow: hidden;
+}
+
+/* 创建第一层星星（小星星，快速闪烁） */
+.tech-background::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 160px 120px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkleSmall 2s infinite;
+    opacity: 0.8;
+}
+
+/* 创建第二层星星（中等大小，中等速度闪烁） */
+.tech-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 10px 10px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 60px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 100px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 140px 90px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 180px 130px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: twinkleMedium 3s infinite 0.5s;
+    opacity: 0.7;
+}
+
+/* 添加第三层星星（大星星，慢速闪烁） */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(3px 3px at 200px 200px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 400px 400px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 600px 300px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    animation: twinkleLarge 4s infinite 1s;
+    opacity: 0.6;
+}
+
+/* 小星星闪烁动画 */
+@keyframes twinkleSmall {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}
+
+/* 中星星闪烁动画 */
+@keyframes twinkleMedium {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.2; }
+}
+
+/* 大星星闪烁动画 */
+@keyframes twinkleLarge {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.1; transform: scale(1.1); }
+}
+
+/* 添加星星光晕效果 */
+.star-glow {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff;
+    animation: starGlow 2s infinite;
+}
+
+.star-glow:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+.star-glow:nth-child(2) { top: 40%; right: 20%; animation-delay: 0.6s; }
+.star-glow:nth-child(3) { bottom: 30%; left: 40%; animation-delay: 1.2s; }
+.star-glow:nth-child(4) { top: 15%; right: 35%; animation-delay: 1.8s; }
+
+@keyframes starGlow {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.3;
+        transform: scale(1.2);
+    }
+}
+
+/* 流星效果 */
+.glow {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 4px rgba(255,255,255,0.1),
+        0 0 0 8px rgba(255,255,255,0.1),
+        0 0 20px rgba(255,255,255,1);
+    animation: shooting 3s infinite;
+}
+
+.glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+    opacity: 0;
+    animation: shootingTail 3s ease-in-out infinite;
+}
+
+.glow:nth-child(1) {
+    top: 0;
+    left: 50%;
+    animation-delay: 0s;
+}
+
+.glow:nth-child(2) {
+    top: 30%;
+    left: 0;
+    animation-delay: -1s;
+}
+
+.glow:nth-child(3) {
+    top: 60%;
+    right: 0;
+    animation-delay: -2s;
+}
+
+/* 流星动画 */
+@keyframes shooting {
+    0% {
+        transform: translate(0, 0) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+    10%, 20% {
+        opacity: 1;
+    }
+    30% {
+        transform: translate(-100vw, 100vh) rotate(-45deg) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-100vw, 100vh) rotate(-45deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes shootingTail {
+    0% {
+        opacity: 0;
+    }
+    10%, 20% {
+        opacity: 1;
+    }
+    30%, 100% {
+        opacity: 0;
+    }
+}
+
+/* 调整搜索框样式 */
+.search-box input {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+}
+
+.search-box:focus-within input {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* 调整分类标题样式 */
+.category-title {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 页脚样式调整 */
+footer {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+/* 点击产生的星星效果 */
+.click-star {
+    position: absolute;
+    pointer-events: none;
+    animation: clickStarAppear 1.5s ease-out forwards;
+    z-index: 0;
+}
+
+.click-star::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 15px #fff,
+        0 0 30px #fff,
+        0 0 45px #fff;
+}
+
+.click-star::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+}
+
+@keyframes clickStarAppear {
+    0% {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* 鼠标拖尾效果 */
+.mouse-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 0, 1);  /* 纯黄色 */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: screen;  /* 使颜色更加明亮 */
+    transform-origin: center;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.8));  /* 添加黄色阴影 */
+    transition: opacity 0.2s ease;
+}
+
+.mouse-trail::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 0, 0.6) 0%,   /* 更强的黄色光晕 */
+        rgba(255, 255, 0, 0.3) 50%,  /* 渐变过渡 */
+        transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulseTrail 1s ease-in-out infinite;
+}
+
+@keyframes pulseTrail {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+    }
+} 

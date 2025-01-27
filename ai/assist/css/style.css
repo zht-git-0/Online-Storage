@@ -1,0 +1,596 @@
+/* 重置样式 - 确保所有元素的默认样式一致 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased; /* 优化字体渲染 */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 全局CSS变量定义 - 便于统一管理和修改主题颜色 */
+:root {
+    --primary-color: #6c5ce7;    /* 主要颜色 */
+    --secondary-color: #a363d9;   /* 次要颜色 */
+    --text-color: #2c3e50;        /* 文本颜色 */
+    --bg-color: #f8f9fc;          /* 背景颜色 */
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 卡片阴影 */
+}
+
+/* 基础布局设置 - 确保页面至少占满整个视口高度 */
+html, body {
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* 页面主体样式 */
+body {
+    font-family: 'Microsoft YaHei', sans-serif; /* 使用微软雅黑作为主字体 */
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部区域样式 */
+header {
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 标题样式 - 赛博朋克风格 */
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    /* 多层文字阴影创建霓虹灯效果 */
+    text-shadow: 
+        0 0 5px rgba(0, 0, 255, 0.8),  /* 深蓝色内发光 */
+        0 0 10px rgba(0, 0, 255, 0.5),
+        0 0 20px rgba(0, 0, 255, 0.3),
+        2px 2px 0px #00f,              /* 蓝色描边 */
+        -2px -2px 0px #0055ff;         /* 亮蓝色描边 */
+    animation: textGlitch 3s infinite;    /* 文字故障动画 */
+}
+
+/* 标题故障效果动画 */
+@keyframes textGlitch {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px rgba(0, 0, 255, 0.8),
+            0 0 10px rgba(0, 0, 255, 0.5),
+            0 0 20px rgba(0, 0, 255, 0.3),
+            2px 2px 0px #00f,
+            -2px -2px 0px #0055ff;
+    }
+    25% {
+        /* 改变阴影位置制造故障效果 */
+        text-shadow: 
+            0 0 5px rgba(0, 0, 255, 0.8),
+            0 0 10px rgba(0, 0, 255, 0.5),
+            0 0 20px rgba(0, 0, 255, 0.3),
+            -2px -2px 0px #00f,
+            2px 2px 0px #0055ff;
+    }
+    50% {
+        text-shadow: 
+            0 0 5px rgba(0, 0, 255, 0.8),
+            0 0 10px rgba(0, 0, 255, 0.5),
+            0 0 20px rgba(0, 0, 255, 0.3),
+            2px -2px 0px #00f,
+            -2px 2px 0px #0055ff;
+    }
+    75% {
+        text-shadow: 
+            0 0 5px rgba(0, 0, 255, 0.8),
+            0 0 10px rgba(0, 0, 255, 0.5),
+            0 0 20px rgba(0, 0, 255, 0.3),
+            -2px 2px 0px #00f,
+            2px -2px 0px #0055ff;
+    }
+}
+
+/* 标题流光效果 */
+header h1::before {
+    content: attr(data-text);  /* 使用data-text属性作为内容 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* 创建渐变背景实现流光效果 */
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(0, 0, 255, 0.8) 50%,
+        transparent 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 4s linear infinite;  /* 应用流光动画 */
+    filter: blur(1px);  /* 添加模糊效果增强光晕 */
+}
+
+/* 流光动画定义 */
+@keyframes shine {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* 副标题样式 */
+header p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 1rem;
+    font-weight: 500;
+    /* 添加发光效果 */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 255, 0.5),
+        0 0 10px rgba(0, 0, 255, 0.5);
+}
+
+/* 内容容器样式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+/* 搜索框容器样式 */
+.search-box {
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* 搜索图标样式 */
+.search-box::before {
+    content: '🔍';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    opacity: 0.8;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* 搜索框加载状态 */
+.search-box.loading::before {
+    animation: searchSpin 1s linear infinite;
+}
+
+/* 搜索框加载动画 */
+@keyframes searchSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 搜索输入框样式 */
+.search-box input {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+/* 搜索框加载状态样式 */
+.search-box.loading input {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* 搜索状态提示样式 */
+.search-status {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    color: #636e72;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* 搜索状态显示条件 */
+.search-box.loading .search-status,
+.search-box.no-results .search-status {
+    opacity: 1;
+}
+
+/* 搜索框占位符样式 */
+.search-box input::placeholder {
+    color: transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 搜索框聚焦时的图标位置 */
+.search-box:focus-within::before {
+    left: 35px;
+    opacity: 0.4;
+    font-size: 1.2rem;
+}
+
+/* 搜索框聚焦时的展开效果 */
+.search-box:focus-within input {
+    width: 100%;
+    max-width: 600px;
+    padding: 18px 25px 18px 60px;
+    border-radius: 30px;
+    cursor: text;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 30px rgba(108, 92, 231, 0.2);
+}
+
+/* 搜索框聚焦时显示占位符 */
+.search-box:focus-within input::placeholder {
+    color: #999;
+    opacity: 0.8;
+}
+
+/* 搜索框聚焦样式 */
+.search-box input:focus {
+    outline: none;
+    box-shadow: 0 4px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* 分类区域样式 */
+.category-section {
+    margin: 2rem 0;
+}
+
+/* 分类标题样式 */
+.category-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 2rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 分类标题装饰线 */
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+    width: 50px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0.5;
+}
+
+/* 卡片网格布局 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+/* 卡片基础样式 */
+.card {
+    position: relative;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    color: #1a1f3c;
+    display: block;
+    height: 200px; /* 固定卡片高度 */
+}
+
+/* 卡片悬浮效果 */
+.card:hover {
+    background: rgba(255, 255, 255, 0.98);
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+/* 卡片霓虹边框效果 */
+.card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 255, 0.5),
+        transparent 20%,
+        transparent 80%,
+        rgba(0, 255, 255, 0.5)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 卡片悬浮时显示霓虹边框 */
+.card:hover::after {
+    opacity: 0.2;
+}
+
+/* 卡片内容布局 */
+.card-content {
+    position: relative;
+    z-index: 1;
+    height: calc(100% - 40px); /* 内容区域高度计算 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 卡片标题样式 */
+.card-content h3 {
+    color: #1e3a8a;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 12px 0 8px;
+    text-shadow: 0 0 5px rgba(30, 58, 138, 0.2);
+    letter-spacing: 1px;
+    line-height: 1.3;
+    max-height: 2.6em; /* 限制标题高度为两行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 限制显示两行 */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+/* 卡片描述文本样式 */
+.card-content p {
+    color: #2c3e50;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    overflow-y: auto;
+    overflow-x: hidden; /* 防止水平滚动 */
+    max-height: 60px; /* 限制描述文本高度 */
+    padding-right: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 限制显示两行 */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-break: break-all; /* 防止长单词导致的溢出 */
+}
+
+/* 自定义滚动条样式 */
+.card-content p::-webkit-scrollbar {
+    width: 4px;
+    height: 0; /* 隐藏水平滚动条 */
+}
+
+.card-content p::-webkit-scrollbar-track {
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.card-content p::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.card-content p::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.5);
+}
+
+/* 卡片悬浮时的文字效果 */
+.card:hover .card-content h3 {
+    color: #0d2b81;
+    text-shadow: 0 0 8px rgba(30, 58, 138, 0.3);
+}
+
+.card:hover .card-content p {
+    color: #1e293b;
+}
+
+/* 卡片图标容器样式 */
+.card-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(0, 0, 255, 0.3); /* 修改为深蓝色边框 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* 卡片图标样式 */
+.card-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: none; /* 移除默认阴影效果 */
+    transition: all 0.3s ease;
+}
+
+/* 卡片悬浮时的图标效果 */
+.card:hover .card-icon {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 255, 0.5); /* 悬浮时加深边框颜色 */
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.2); /* 修改为深蓝色阴影 */
+}
+
+.card:hover .card-icon img {
+    transform: scale(1.1);
+    filter: none; /* 移除悬浮时的阴影效果 */
+}
+
+/* 响应式布局 - 平板设备 */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .search-box {
+        padding: 0 15px;
+    }
+
+    .search-box:focus-within input {
+        max-width: 500px;
+    }
+
+    .category-section {
+        margin: 1.5rem 0;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-icon img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* 响应式布局 - 移动设备 */
+@media (max-width: 480px) {
+    header {
+        padding: 1.5rem 0;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .search-box {
+        padding: 0 10px;
+    }
+
+    .search-box:focus-within input {
+        max-width: 100%;
+        padding: 15px 20px 15px 50px;
+    }
+
+    .search-box:focus-within::before {
+        left: 25px;
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+
+    .category-section {
+        margin: 1rem 0;
+    }
+
+    .card-grid {
+        gap: 12px;
+        padding: 5px 0;
+    }
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .card {
+        background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .card:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .card-title {
+        color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .card-description {
+        color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+/* 卡片链接样式 */
+.card > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+} 
