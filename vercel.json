@@ -5,6 +5,21 @@
     {
       "source": "/ai",
       "destination": "/ai/index.html"
+    },
+    {
+      "source": "/ai/assist/:path*",
+      "destination": "/ai/assist/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/ai/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 } 
